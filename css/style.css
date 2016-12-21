@@ -1,0 +1,101 @@
+/* --------------------------
+  Base
+--------------------------- */
+
+body {
+  background: #8069a1;
+  padding-top: 60px;
+}
+
+svg {
+	margin: auto;
+  display: block;
+}
+
+/* --------------------------
+  Keyframes
+--------------------------- */
+@keyframes grow {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes turn {
+  0% {
+    transform: rotate(0) scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: rotate(375deg) scale(1.1); /* wre slightly overshooting the final rotate and scale values then going below them to give them that realistic bounce effect*/
+  }
+  80% {
+    transform: rotate(355deg) scale(0.9);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes puls {
+  50% {                 /* In this keyframe rule, we don't need include keyframes for 0% or 100%. Because at 0%, the animation will use the elements initial scale value then animate to the scale value here at 50%. And then back to the initial value at 100%.*/
+    transform: scale(1.4);
+  }
+}
+
+
+/* --------------------------
+  SVG Styles
+--------------------------- */
+
+.badge * {    /* This will target every element inside the "badge", and apply the transform-origin */
+  transform-origin: 50% 50%;
+}
+
+.outer-circle,
+.inner-circle,
+.inline {
+  animation: grow 1s ease-out backwards; /* backwards fill mode will immediately apply the first animation keyframe when the page loads */
+}
+
+.inner-circle {
+  animation-delay: .1s;
+}
+
+.inline {
+  animation-delay: .15s;
+}
+
+.star {
+  animation: turn 1.1s .2s ease-out backwards;
+}
+
+.star circle {       /*it targets the circle elements inside the "star" class*/
+  animation: pulse .7s 1.5s;
+}
+
+.star circle:nth-of type(2) {  /* we want to start the delay on the second circle element */
+  animation-delay: 1.6s;  
+}
+
+.star circle:nth-of type(3) {  
+  animation-delay: 1.7s;  
+}
+
+.star circle:nth-of type(4) {  
+  animation-delay: 1.8s;  
+}
+
+.star circle:nth-of type(5) {  
+  animation-delay: 1.9s;  
+}
+
+
+
+
